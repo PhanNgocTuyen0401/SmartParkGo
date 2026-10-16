@@ -1,0 +1,26 @@
+{
+  "name": "SmartPark Đà Nẵng",
+  "short_name": "SmartPark",
+  "description": "Hệ thống đỗ xe thông minh SmartPark – TP. Đà Nẵng",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#09090b",
+  "theme_color": "#0284c7",
+  "lang": "vi",
+  "categories": ["utilities", "transportation"],
+  "icons": [
+    { "src": "/smartpark-logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/smartpark-logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Đặt chỗ trước",
+      "short_name": "Đặt chỗ",
+      "description": "Đặt chỗ đỗ xe nhanh",
+      "url": "/home?tab=booking",
+      "icons": [{ "src": "/smartpark-logo.png", "sizes": "96x96" }]
+    }
+  ]
+}

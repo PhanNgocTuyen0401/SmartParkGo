@@ -1,0 +1,443 @@
+/* ==========================================================================
+   BANK PIN MODAL STYLES (BANK-GRADE SECURITY)
+   ========================================================================== */
+
+.bank-pin-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: bankFadeIn 0.2s ease-out;
+}
+
+@keyframes bankFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.bank-pin-modal {
+  width: 100%;
+  max-width: 400px;
+  background: #121216;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 30px rgba(59, 130, 246, 0.1);
+  padding: 2rem 1.75rem 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fafafa;
+  animation: bankModalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bankModalPop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.bank-pin-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.bank-pin-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Header */
+.bank-pin-badge-shield {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.1) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #3b82f6;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 0.85rem;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.25);
+}
+
+.bank-pin-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #60a5fa;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.bank-pin-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.45rem;
+  letter-spacing: -0.01em;
+}
+
+.bank-pin-desc {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+/* Steps indicator */
+.bank-pin-steps-indicator {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.bank-step-bar {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 0.7rem;
+  color: #71717a;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.bank-step-bar.active {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+}
+
+/* 6 Pin Dots Indicator */
+.bank-pin-dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0.5rem 0 1.5rem;
+  padding: 0.5rem;
+}
+
+.bank-pin-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #3f3f46;
+  background: transparent;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bank-pin-dot.filled {
+  border-color: #3b82f6;
+  background: #3b82f6;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.85);
+  transform: scale(1.15);
+}
+
+.bank-dot-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+/* Shake animation on error */
+.bank-pin-dots-container.shake {
+  animation: bankShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes bankShake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* Messages */
+.bank-pin-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.bank-pin-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.bank-pin-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #60a5fa;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.bank-pin-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 3x4 Bank Numeric Keypad */
+.bank-pin-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.bank-key-btn {
+  height: 56px;
+  background: #18181c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bank-key-btn:hover:not(:disabled) {
+  background: #222228;
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.bank-key-btn:active:not(:disabled) {
+  transform: scale(0.95);
+  background: #272730;
+}
+
+.bank-key-btn.special {
+  background: transparent;
+  border-color: transparent;
+  color: #a1a1aa;
+}
+
+.bank-key-btn.special:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.bank-key-number {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.bank-key-sub {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #71717a;
+  margin-top: 0.1rem;
+}
+
+.bank-key-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Footer */
+.bank-pin-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  color: #71717a;
+  flex-wrap: wrap;
+}
+
+.bank-pin-back-btn {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  font-size: 0.68rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   BƯỚC 0: XÁC THỰC BẢO MẬT ADMIN ĐỔI PIN
+   ========================================================================== */
+.bank-security-step-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.bank-security-banner {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.73rem;
+  line-height: 1.45;
+  color: #fcd34d;
+  text-align: left;
+}
+
+.bank-auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  background: #090d16;
+  padding: 3px;
+  border-radius: 9px;
+  border: 1px solid #1e293b;
+}
+
+.bank-auth-tab {
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  padding: 0.45rem 0.5rem;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bank-auth-tab.active {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+.bank-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  text-align: left;
+}
+
+.bank-auth-field label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: 0.4rem;
+}
+
+.bank-auth-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: #090d16;
+  border: 1.5px solid #334155;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.bank-auth-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.bank-auth-submit-btn {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  border: none;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.bank-auth-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.5);
+}
+
+.bank-auth-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
